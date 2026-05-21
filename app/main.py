@@ -5,8 +5,8 @@ import sys
 import tkinter as tk
 import webbrowser
 import traceback
-import msvcrt
 import atexit
+import msvcrt
 import tempfile
 from datetime import datetime
 from pathlib import Path
@@ -380,9 +380,8 @@ class StatusWindow:
             _log_error("tick_loop", exc)
             self._render_error(exc)
 
-        # Reinforce topmost periodically (some Windows focus transitions can demote it).
         self._topmost_counter += 1
-        if self._topmost_counter >= 8:  # ~2s with 250ms tick
+        if self._topmost_counter >= 8:
             self._topmost_counter = 0
             try:
                 self.root.attributes("-topmost", True)
@@ -478,9 +477,8 @@ def main() -> None:
 
 def _acquire_single_instance_lock():
     try:
-        lock_file = LOCK_FILE
-        lock_file.parent.mkdir(parents=True, exist_ok=True)
-        fh = open(lock_file, "w")
+        LOCK_FILE.parent.mkdir(parents=True, exist_ok=True)
+        fh = open(LOCK_FILE, "w")
         try:
             msvcrt.locking(fh.fileno(), msvcrt.LK_NBLCK, 1)
         except OSError:
