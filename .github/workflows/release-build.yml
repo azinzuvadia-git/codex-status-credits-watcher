@@ -9,6 +9,8 @@ on:
 jobs:
   build-windows:
     runs-on: windows-latest
+    env:
+      HAS_CODESIGN: ${{ secrets.WIN_CODESIGN_PFX_BASE64 != '' && secrets.WIN_CODESIGN_PFX_PASSWORD != '' }}
 
     steps:
       - name: Checkout
@@ -45,14 +47,14 @@ jobs:
           pyinstaller --noconfirm --onedir --windowed --name codex-credits-watcher-onedir app\main.py
 
       - name: Decode code-sign certificate
-        if: ${{ secrets.WIN_CODESIGN_PFX_BASE64 != '' && secrets.WIN_CODESIGN_PFX_PASSWORD != '' }}
+        if: ${{ env.HAS_CODESIGN == 'true' }}
         shell: pwsh
         run: |
           $bytes = [Convert]::FromBase64String("${{ secrets.WIN_CODESIGN_PFX_BASE64 }}")
           [IO.File]::WriteAllBytes("$env:RUNNER_TEMP\codesign.pfx", $bytes)
 
       - name: Sign EXE (timestamped)
-        if: ${{ secrets.WIN_CODESIGN_PFX_BASE64 != '' && secrets.WIN_CODESIGN_PFX_PASSWORD != '' }}
+        if: ${{ env.HAS_CODESIGN == 'true' }}
         shell: pwsh
         run: |
           $ts = "${{ secrets.WIN_CODESIGN_TIMESTAMP_URL }}"
@@ -73,7 +75,7 @@ jobs:
             "dist\codex-credits-watcher-onedir\codex-credits-watcher-onedir.exe"
 
       - name: Verify signature
-        if: ${{ secrets.WIN_CODESIGN_PFX_BASE64 != '' && secrets.WIN_CODESIGN_PFX_PASSWORD != '' }}
+        if: ${{ env.HAS_CODESIGN == 'true' }}
         shell: pwsh
         run: |
           & signtool verify /pa /v "dist\codex-credits-watcher-onefile.exe"
