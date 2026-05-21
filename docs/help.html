@@ -187,9 +187,21 @@
       <article class="card">
         <h2>Versioning and Release Notes</h2>
         <p>
-          Current version: <span class="k">0.1.0-rc.1</span><br />
+          Current version: <span class="k">0.1.0-rc.2</span><br />
           Source of truth: <span class="k">VERSION</span><br />
           Full release history: <a href="changelog.md">docs/changelog.md</a>
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Community Testing and Feedback</h2>
+        <p>
+          Please test this app with your own Codex CLI setup and account.
+          If you see errors, unexpected status values, or UI issues, please report them in GitHub Issues.
+        </p>
+        <p>
+          Report here:
+          <a href="https://github.com/azinzuvadia-git/codex-status-credits-watcher/issues" target="_blank" rel="noreferrer">GitHub Issues</a>
         </p>
       </article>
 
@@ -203,6 +215,22 @@
         <p>
           Tracking issue:
           <a href="https://github.com/openai/codex/issues/10233" target="_blank" rel="noreferrer">openai/codex#10233</a>
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Install Safety (Unsigned RC/Beta Builds)</h2>
+        <p>
+          Some RC/beta binaries may be unsigned and can trigger antivirus warnings.
+          Verify file integrity before running.
+        </p>
+        <ul>
+          <li>Download <span class="k">codex-credits-watcher-onefile.exe</span> and <span class="k">SHA256SUMS.txt</span>.</li>
+          <li>Compute local hash in PowerShell: <span class="k">Get-FileHash .\\codex-credits-watcher-onefile.exe -Algorithm SHA256</span></li>
+          <li>Confirm it matches the value in <span class="k">SHA256SUMS.txt</span>.</li>
+        </ul>
+        <p>
+          Full guidance: <a href="../SECURITY.md" target="_blank" rel="noopener noreferrer">SECURITY.md</a>
         </p>
       </article>
 

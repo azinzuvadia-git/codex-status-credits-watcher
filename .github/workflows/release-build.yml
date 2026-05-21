@@ -1,0 +1,100 @@
+﻿name: Build Windows Release Asset
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.10'
+          cache: 'pip'
+
+      - name: Install build deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-build.txt
+
+      - name: Validate tag matches VERSION
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $version = (Get-Content VERSION -Raw).Trim()
+          if ($tag -ne "v$version") {
+            Write-Error "Tag ($tag) does not match VERSION ($version)"
+            exit 1
+          }
+
+      - name: Build EXE (onefile)
+        run: |
+          pyinstaller --noconfirm --onefile --windowed --name codex-credits-watcher-onefile app\main.py
+
+      - name: Build EXE (onedir)
+        run: |
+          pyinstaller --noconfirm --onedir --windowed --name codex-credits-watcher-onedir app\main.py
+
+      - name: Decode code-sign certificate
+        if: ${{ secrets.WIN_CODESIGN_PFX_BASE64 != '' && secrets.WIN_CODESIGN_PFX_PASSWORD != '' }}
+        shell: pwsh
+        run: |
+          $bytes = [Convert]::FromBase64String("${{ secrets.WIN_CODESIGN_PFX_BASE64 }}")
+          [IO.File]::WriteAllBytes("$env:RUNNER_TEMP\codesign.pfx", $bytes)
+
+      - name: Sign EXE (timestamped)
+        if: ${{ secrets.WIN_CODESIGN_PFX_BASE64 != '' && secrets.WIN_CODESIGN_PFX_PASSWORD != '' }}
+        shell: pwsh
+        run: |
+          $ts = "${{ secrets.WIN_CODESIGN_TIMESTAMP_URL }}"
+          if ([string]::IsNullOrWhiteSpace($ts)) { $ts = "http://timestamp.digicert.com" }
+          & signtool sign `
+            /fd sha256 `
+            /td sha256 `
+            /f "$env:RUNNER_TEMP\codesign.pfx" `
+            /p "${{ secrets.WIN_CODESIGN_PFX_PASSWORD }}" `
+            /tr $ts `
+            "dist\codex-credits-watcher-onefile.exe"
+          & signtool sign `
+            /fd sha256 `
+            /td sha256 `
+            /f "$env:RUNNER_TEMP\codesign.pfx" `
+            /p "${{ secrets.WIN_CODESIGN_PFX_PASSWORD }}" `
+            /tr $ts `
+            "dist\codex-credits-watcher-onedir\codex-credits-watcher-onedir.exe"
+
+      - name: Verify signature
+        if: ${{ secrets.WIN_CODESIGN_PFX_BASE64 != '' && secrets.WIN_CODESIGN_PFX_PASSWORD != '' }}
+        shell: pwsh
+        run: |
+          & signtool verify /pa /v "dist\codex-credits-watcher-onefile.exe"
+          & signtool verify /pa /v "dist\codex-credits-watcher-onedir\codex-credits-watcher-onedir.exe"
+
+      - name: Generate SHA256 checksum
+        shell: pwsh
+        run: |
+          $one = "dist/codex-credits-watcher-onefile.exe"
+          $oneHash = (Get-FileHash $one -Algorithm SHA256).Hash.ToLower()
+          "${oneHash}  codex-credits-watcher-onefile.exe" | Out-File -FilePath dist/SHA256SUMS.txt -Encoding ascii
+
+          $dirExe = "dist/codex-credits-watcher-onedir/codex-credits-watcher-onedir.exe"
+          $dirHash = (Get-FileHash $dirExe -Algorithm SHA256).Hash.ToLower()
+          "${dirHash}  codex-credits-watcher-onedir.exe" | Out-File -FilePath dist/SHA256SUMS.txt -Encoding ascii -Append
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: codex-credits-watcher-windows
+          path: |
+            dist/codex-credits-watcher-onefile.exe
+            dist/codex-credits-watcher-onedir/**
+            dist/SHA256SUMS.txt
