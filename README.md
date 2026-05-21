@@ -48,6 +48,7 @@ Open `docs/help.html` for a visual usage guide and component reference.
 - Secure release checklist: `docs/secure-release.md`
 - Unsigned release checklist: `docs/unsigned-release-checklist.md`
 - Norton submission template: `docs/norton-submission-template.md`
+- Trust and reputation rollout: `docs/reputation-rollout.md`
 - SHA256 checksum script: `scripts/generate-checksums.ps1`
 - Deterministic local build script: `scripts/build-release.ps1`
 - Pinned build dependencies: `requirements-build.txt`
