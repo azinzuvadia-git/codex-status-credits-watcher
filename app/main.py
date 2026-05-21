@@ -5,6 +5,9 @@ import sys
 import tkinter as tk
 import webbrowser
 import traceback
+import atexit
+import msvcrt
+import tempfile
 from datetime import datetime
 from pathlib import Path
 
@@ -16,6 +19,7 @@ WIDGET_HEIGHT = 112
 RADIUS = 10
 HELP_URL = "https://azinzuvadia-git.github.io/codex-status-credits-watcher/help.html"
 LOG_FILE = Path.home() / "codex-credits-watcher.log"
+LOCK_FILE = Path(tempfile.gettempdir()) / "codex-credits-watcher.lock"
 
 
 def _log_error(context: str, err: BaseException) -> None:
@@ -82,6 +86,7 @@ class StatusWindow:
         self.last_5h_percent = 0
         self.last_wk_percent = 0
         self.version_text = self._load_version()
+        self._topmost_counter = 0
 
         self.queue: queue.Queue[object] = queue.Queue()
         self.poller = CodexStatusPoller(self.queue)
@@ -375,6 +380,15 @@ class StatusWindow:
             _log_error("tick_loop", exc)
             self._render_error(exc)
 
+        self._topmost_counter += 1
+        if self._topmost_counter >= 8:
+            self._topmost_counter = 0
+            try:
+                self.root.attributes("-topmost", True)
+                self.root.lift()
+            except Exception as exc:
+                _log_error("topmost_refresh", exc)
+
         self.root.after(250, self._tick)
 
     def _render_status(self, status: StatusSnapshot) -> None:
@@ -426,6 +440,22 @@ class StatusWindow:
 
 
 def main() -> None:
+    lock_handle = _acquire_single_instance_lock()
+    if not lock_handle:
+        return
+
+    def _release_lock() -> None:
+        try:
+            msvcrt.locking(lock_handle.fileno(), msvcrt.LK_UNLCK, 1)
+        except OSError:
+            pass
+        try:
+            lock_handle.close()
+        except OSError:
+            pass
+
+    atexit.register(_release_lock)
+
     root = tk.Tk()
     app = StatusWindow(root)
 
@@ -443,6 +473,23 @@ def main() -> None:
     root.protocol("WM_DELETE_WINDOW", _on_close)
     app.start()
     root.mainloop()
+
+
+def _acquire_single_instance_lock():
+    try:
+        LOCK_FILE.parent.mkdir(parents=True, exist_ok=True)
+        fh = open(LOCK_FILE, "w")
+        try:
+            msvcrt.locking(fh.fileno(), msvcrt.LK_NBLCK, 1)
+        except OSError:
+            fh.close()
+            return None
+        fh.write(str(Path(sys.executable)))
+        fh.flush()
+        return fh
+    except OSError as exc:
+        _log_error("single_instance_lock", exc)
+        return None
 
 
 if __name__ == "__main__":
