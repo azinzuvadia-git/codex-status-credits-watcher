@@ -11,6 +11,7 @@ from parser import StatusSnapshot
 WIDGET_WIDTH = 168
 WIDGET_HEIGHT = 112
 RADIUS = 10
+HELP_URL = "https://azinzuvadia-git.github.io/codex-status-credits-watcher/help.html"
 
 
 class Tooltip:
@@ -64,6 +65,7 @@ class StatusWindow:
         self._drag_start_y = 0
         self.last_5h_percent = 0
         self.last_wk_percent = 0
+        self.version_text = self._load_version()
 
         self.queue: queue.Queue[object] = queue.Queue()
         self.poller = CodexStatusPoller(self.queue)
@@ -251,6 +253,7 @@ class StatusWindow:
         Tooltip(self.line_week, "Weekly window\nCurrent quota band")
         Tooltip(self.line_week_reset, "⏳ Weekly reset timer\nTime left")
         Tooltip(self.balance_label, "$ credit status\n✓ available\n✕ unavailable\n? unknown")
+        Tooltip(self.help_label, f"Version:\n{self.version_text}")
         self._bind_canvas_tooltip(self.batt_5h_outer, lambda: f"5h Quota\n{self.last_5h_percent}% left")
         self._bind_canvas_tooltip(self.batt_5h_fill, lambda: f"5h Quota\n{self.last_5h_percent}% left")
         self._bind_canvas_tooltip(self.batt_5h_hit, lambda: f"5h Quota\n{self.last_5h_percent}% left")
@@ -309,10 +312,16 @@ class StatusWindow:
         self.root.destroy()
 
     def _open_help(self, _event: tk.Event) -> None:
+        webbrowser.open(HELP_URL)
+
+    def _load_version(self) -> str:
         repo_root = Path(__file__).resolve().parent.parent
-        help_file = repo_root / "docs" / "help.html"
-        if help_file.exists():
-            webbrowser.open(help_file.as_uri())
+        version_file = repo_root / "VERSION"
+        try:
+            version = version_file.read_text(encoding="utf-8").strip()
+            return version or "unknown"
+        except OSError:
+            return "unknown"
 
     def start(self) -> None:
         self.poller.start()
