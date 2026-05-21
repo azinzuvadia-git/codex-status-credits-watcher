@@ -207,6 +207,22 @@
       </article>
 
       <article class="card">
+        <h2>Install Safety (Unsigned RC/Beta Builds)</h2>
+        <p>
+          Some RC/beta binaries may be unsigned and can trigger antivirus warnings.
+          Verify file integrity before running.
+        </p>
+        <ul>
+          <li>Download <span class="k">codex-credits-watcher-onefile.exe</span> and <span class="k">SHA256SUMS.txt</span>.</li>
+          <li>Compute local hash in PowerShell: <span class="k">Get-FileHash .\\codex-credits-watcher-onefile.exe -Algorithm SHA256</span></li>
+          <li>Confirm it matches the value in <span class="k">SHA256SUMS.txt</span>.</li>
+        </ul>
+        <p>
+          Full guidance: <a href="../SECURITY.md" target="_blank" rel="noopener noreferrer">SECURITY.md</a>
+        </p>
+      </article>
+
+      <article class="card">
         <h2>How We Got This Working (Technical)</h2>
         <p>
           The widget uses a local background Codex app-server session and reads status via JSON-RPC, instead of parsing

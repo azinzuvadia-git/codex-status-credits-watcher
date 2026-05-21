@@ -41,3 +41,15 @@ Open `docs/help.html` for a visual usage guide and component reference.
 - Current version: see `VERSION`
 - Release history: `docs/changelog.md`
 - Versioning policy: `docs/versioning.md`
+- Distribution strategy: `docs/distribution-strategy.md`
+
+## Secure Release / AV Guidance
+
+- Secure release checklist: `docs/secure-release.md`
+- Unsigned release checklist: `docs/unsigned-release-checklist.md`
+- Norton submission template: `docs/norton-submission-template.md`
+- SHA256 checksum script: `scripts/generate-checksums.ps1`
+- Deterministic local build script: `scripts/build-release.ps1`
+- Pinned build dependencies: `requirements-build.txt`
+- CI build workflow: `.github/workflows/release-build.yml`
+- End-user integrity guide: `SECURITY.md`

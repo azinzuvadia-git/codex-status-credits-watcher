@@ -28,3 +28,8 @@ Examples:
 5. Validate app behavior.
 6. Push to `pre-production-test`.
 7. Promote to `main` for production.
+
+## Distribution by release type
+
+- RC/Beta (`X.Y.Z-rc.N`): publish onefile EXE + onedir EXE + SHA256.
+- Stable (`X.Y.Z`): publish signed installer as primary artifact, keep EXE as fallback.

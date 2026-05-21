@@ -15,7 +15,7 @@ This project follows Semantic Versioning with release candidates for pre-product
 - Dark-themed `docs/help.html` usage guide with integrated screenshot.
 - Right-aligned footer link to Apoorva Consulting website.
 - Header help button (`?`) that opens local help page.
-- Non-commercial terms file in German (`LICENSE-NONCOMMERCIAL.de.txt`).
+- Non-commercial terms file in German (`LICENSE.de.txt`).
 
 ### Changed
 - Compact UI layout tuned for taskbar-like visual scale.
