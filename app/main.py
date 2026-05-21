@@ -4,6 +4,8 @@ import queue
 import sys
 import tkinter as tk
 import webbrowser
+import traceback
+from datetime import datetime
 from pathlib import Path
 
 from codex_session import CodexStatusPoller
@@ -13,6 +15,19 @@ WIDGET_WIDTH = 168
 WIDGET_HEIGHT = 112
 RADIUS = 10
 HELP_URL = "https://azinzuvadia-git.github.io/codex-status-credits-watcher/help.html"
+LOG_FILE = Path.home() / "codex-credits-watcher.log"
+
+
+def _log_error(context: str, err: BaseException) -> None:
+    try:
+        LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with LOG_FILE.open("a", encoding="utf-8") as f:
+            f.write(f"[{datetime.now().isoformat(timespec='seconds')}] {context}: {err}\n")
+            f.write("".join(traceback.format_exception(type(err), err, err.__traceback__)))
+            f.write("\n")
+    except OSError:
+        # Never let logging itself crash the app.
+        pass
 
 
 class Tooltip:
@@ -346,11 +361,19 @@ class StatusWindow:
             while True:
                 item = self.queue.get_nowait()
                 if isinstance(item, StatusSnapshot):
-                    self._render_status(item)
+                    try:
+                        self._render_status(item)
+                    except Exception as exc:
+                        _log_error("render_status", exc)
+                        self._render_error(exc)
                 elif isinstance(item, Exception):
+                    _log_error("poller_exception", item)
                     self._render_error(item)
         except queue.Empty:
             pass
+        except Exception as exc:
+            _log_error("tick_loop", exc)
+            self._render_error(exc)
 
         self.root.after(250, self._tick)
 
@@ -405,6 +428,13 @@ class StatusWindow:
 def main() -> None:
     root = tk.Tk()
     app = StatusWindow(root)
+
+    def _report_tk_exception(exc_type, exc_value, exc_traceback) -> None:
+        err = exc_value if isinstance(exc_value, BaseException) else RuntimeError(str(exc_value))
+        _log_error("tk_callback", err)
+        app._render_error(err)
+
+    root.report_callback_exception = _report_tk_exception
 
     def _on_close() -> None:
         app.stop()
