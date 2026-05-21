@@ -1,0 +1,131 @@
+# PolyForm Noncommercial License 1.0.0 (German Translation)
+
+<https://polyformproject.org/licenses/noncommercial/1.0.0>
+
+Hinweis: Diese Datei ist eine deutsche Uebersetzung zur besseren Lesbarkeit.
+Rechtlich verbindlich ist die englische Originalfassung in der Datei `LICENSE`.
+
+Required Notice: Copyright 2026 Apoorva Zinzuvadia
+
+## Annahme
+
+Um irgendeine Lizenz unter diesen Bedingungen zu erhalten, musst du ihnen
+als strengen Verpflichtungen und Bedingungen fuer alle deine Lizenzen zustimmen.
+
+## Urheberrechtslizenz
+
+Der Lizenzgeber gewaehrt dir eine urheberrechtliche Lizenz fuer die Software,
+um alles zu tun, was du mit der Software tun koenntest und was sonst die
+Urheberrechte des Lizenzgebers verletzen wuerde, sofern es zu einem erlaubten
+Zweck erfolgt. Du darfst die Software jedoch nur gemaess der
+[Vertriebslizenz](#vertriebslizenz) verbreiten und nur gemaess der
+[Lizenz fuer Aenderungen und neue Werke](#lizenz-fuer-aenderungen-und-neue-werke)
+Aenderungen oder neue Werke auf Basis der Software erstellen.
+
+## Vertriebslizenz
+
+Der Lizenzgeber gewaehrt dir eine zusaetzliche urheberrechtliche Lizenz,
+Kopien der Software zu verbreiten. Deine Verbreitungslizenz umfasst auch die
+Verbreitung der Software mit Aenderungen und neuen Werken, die gemaess der
+[Lizenz fuer Aenderungen und neue Werke](#lizenz-fuer-aenderungen-und-neue-werke)
+zulaessig sind.
+
+## Hinweise
+
+Du musst sicherstellen, dass jede Person, die von dir eine Kopie irgendeines
+Teils der Software erhaelt, ebenfalls eine Kopie dieser Bedingungen oder die
+oben angegebene URL erhaelt, sowie Kopien aller Klartextzeilen, die mit
+`Required Notice:` beginnen und die der Lizenzgeber mit der Software
+bereitgestellt hat. Zum Beispiel:
+
+> Required Notice: Copyright Yoyodyne, Inc. (http://example.com)
+
+## Lizenz fuer Aenderungen und neue Werke
+
+Der Lizenzgeber gewaehrt dir eine zusaetzliche urheberrechtliche Lizenz,
+Aenderungen und neue Werke auf Grundlage der Software fuer jeden erlaubten
+Zweck zu erstellen.
+
+## Patentlizenz
+
+Der Lizenzgeber gewaehrt dir eine Patentlizenz fuer die Software, die
+Patentansprueche abdeckt, die der Lizenzgeber lizenzieren kann oder kuenftig
+lizenzieren kann und die du durch die Nutzung der Software verletzen wuerdest.
+
+## Nicht-kommerzielle Zwecke
+
+Jeder nicht-kommerzielle Zweck ist ein erlaubter Zweck.
+
+## Persoenliche Nutzungen
+
+Persoenliche Nutzung fuer Forschung, Experiment, Tests zum Nutzen oeffentlichen
+Wissens, persoenliches Studium, private Unterhaltung, Hobbyprojekte, amateure
+Taetigkeiten oder religioese Ausuebung, ohne erwartete kommerzielle Anwendung,
+ist eine Nutzung zu einem erlaubten Zweck.
+
+## Nicht-kommerzielle Organisationen
+
+Nutzung durch gemeinnuetzige Organisationen, Bildungseinrichtungen, oeffentliche
+Forschungseinrichtungen, Organisationen der oeffentlichen Sicherheit oder
+Gesundheit, Umweltschutzorganisationen oder staatliche Einrichtungen ist eine
+Nutzung zu einem erlaubten Zweck, unabhaengig von der Finanzierungsquelle oder
+von Verpflichtungen aus dieser Finanzierung.
+
+## Fair Use
+
+Du hast moeglicherweise "Fair Use"-Rechte an der Software nach geltendem Recht.
+Diese Bedingungen schraenken diese Rechte nicht ein.
+
+## Keine weiteren Rechte
+
+Diese Bedingungen erlauben dir nicht, Lizenzen unterzulizenzieren oder auf
+andere zu uebertragen, und sie hindern den Lizenzgeber nicht daran, anderen
+Lizenzen zu erteilen. Diese Bedingungen implizieren keine weiteren Lizenzen.
+
+## Patentverteidigung
+
+Wenn du schriftlich geltend machst, dass die Software ein Patent verletzt oder
+zu einer Patentverletzung beitraegt, endet deine unter diesen Bedingungen
+gewaehrte Patentlizenz fuer die Software sofort. Wenn dein Unternehmen einen
+solchen Anspruch erhebt, endet deine Patentlizenz fuer Taetigkeiten im Auftrag
+deines Unternehmens sofort.
+
+## Verstoesse
+
+Wenn du das erste Mal schriftlich darueber informiert wirst, dass du gegen
+diese Bedingungen verstossen hast oder etwas mit der Software getan hast, das
+nicht von deinen Lizenzen gedeckt ist, koennen deine Lizenzen dennoch fortbestehen,
+wenn du innerhalb von 32 Tagen nach Erhalt der Mitteilung vollstaendig in
+Uebereinstimmung mit diesen Bedingungen kommst und praktische Schritte
+unternimmst, um fruehere Verstoesse zu beheben. Andernfalls enden alle deine
+Lizenzen sofort.
+
+## Keine Haftung
+
+***Soweit gesetzlich zulaessig, wird die Software wie besehen ohne jegliche
+Gewaehrleistung oder Bedingung bereitgestellt, und der Lizenzgeber haftet nicht
+fuer Schaeden, die aus diesen Bedingungen oder aus der Nutzung oder Art der
+Software entstehen, gleich aus welchem Rechtsgrund.***
+
+## Definitionen
+
+Der **Lizenzgeber** ist die natuerliche oder juristische Person, die diese
+Bedingungen anbietet, und die **Software** ist die Software, die der
+Lizenzgeber unter diesen Bedingungen bereitstellt.
+
+**Du** bezeichnet die natuerliche oder juristische Person, die diesen
+Bedingungen zustimmt.
+
+**Dein Unternehmen** ist jede juristische Person, Einzelunternehmung oder andere
+Organisation, fuer die du arbeitest, sowie alle Organisationen, die dieses
+Unternehmen kontrollieren, von ihm kontrolliert werden oder unter gemeinsamer
+Kontrolle mit ihm stehen. **Kontrolle** bedeutet Eigentum an einem wesentlichen
+Teil der Vermoegenswerte einer Einheit oder die Befugnis, deren Management und
+Richtlinien durch Abstimmung, Vertrag oder auf andere Weise zu bestimmen.
+Kontrolle kann direkt oder indirekt sein.
+
+**Deine Lizenzen** sind alle Lizenzen, die dir fuer die Software unter diesen
+Bedingungen gewaehrt werden.
+
+**Nutzung** bedeutet alles, was du mit der Software tust und wofuer eine deiner
+Lizenzen erforderlich ist.

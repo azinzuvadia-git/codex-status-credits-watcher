@@ -29,7 +29,8 @@ python main.py
 
 ## License
 
-This project is released under the non-commercial terms in `LICENSE-NONCOMMERCIAL.de.txt` (draft).
+This project is licensed under PolyForm Noncommercial 1.0.0. See `LICENSE`.
+Commercial use requires separate permission from the licensor.
 
 ## Help Guide
 
