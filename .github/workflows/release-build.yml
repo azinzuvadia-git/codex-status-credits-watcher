@@ -41,11 +41,11 @@ jobs:
 
       - name: Build EXE (onefile)
         run: |
-          pyinstaller --noconfirm --onefile --windowed --name codex-credits-watcher-onefile app\main.py
+          pyinstaller --noconfirm --onefile --windowed --name codex-credits-watcher-onefile --add-data "VERSION;." app\main.py
 
       - name: Build EXE (onedir)
         run: |
-          pyinstaller --noconfirm --onedir --windowed --name codex-credits-watcher-onedir app\main.py
+          pyinstaller --noconfirm --onedir --windowed --name codex-credits-watcher-onedir --add-data "VERSION;." app\main.py
 
       - name: Decode code-sign certificate
         if: ${{ env.HAS_CODESIGN == 'true' }}

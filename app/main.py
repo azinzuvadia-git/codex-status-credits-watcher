@@ -1,6 +1,7 @@
 ﻿from __future__ import annotations
 
 import queue
+import sys
 import tkinter as tk
 import webbrowser
 from pathlib import Path
@@ -315,13 +316,23 @@ class StatusWindow:
         webbrowser.open(HELP_URL)
 
     def _load_version(self) -> str:
-        repo_root = Path(__file__).resolve().parent.parent
-        version_file = repo_root / "VERSION"
-        try:
-            version = version_file.read_text(encoding="utf-8").strip()
-            return version or "unknown"
-        except OSError:
-            return "unknown"
+        candidates: list[Path] = []
+        # Dev mode candidate
+        candidates.append(Path(__file__).resolve().parent.parent / "VERSION")
+        # PyInstaller onefile/onedir bundled data candidate
+        if hasattr(sys, "_MEIPASS"):
+            candidates.append(Path(getattr(sys, "_MEIPASS")) / "VERSION")
+        # EXE directory fallback
+        candidates.append(Path(sys.executable).resolve().parent / "VERSION")
+
+        for version_file in candidates:
+            try:
+                version = version_file.read_text(encoding="utf-8").strip()
+                if version:
+                    return version
+            except OSError:
+                continue
+        return "unknown"
 
     def start(self) -> None:
         self.poller.start()
