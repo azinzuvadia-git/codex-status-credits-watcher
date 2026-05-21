@@ -1,0 +1,237 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Codex Credits Watcher - Help</title>
+  <style>
+    :root {
+      --bg: #0a0f1a;
+      --card: #111a2c;
+      --card-2: #17243d;
+      --text: #e8efff;
+      --muted: #a6b7d7;
+      --line: #2a3b5f;
+      --ok: #6de08a;
+      --bad: #ff7b8a;
+      --unknown: #a8b5cb;
+      --link: #7fb0ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top left, #14213f 0%, var(--bg) 40%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, #15233f 0%, #10192d 100%);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    h1, h2 {
+      margin: 0 0 10px;
+      line-height: 1.2;
+    }
+
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.1rem; color: #cfe0ff; }
+
+    p { margin: 0 0 12px; color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .shot {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 10px;
+      border: 1px solid #2e4067;
+      display: block;
+      margin-top: 8px;
+    }
+
+    .k {
+      display: inline-block;
+      background: var(--card-2);
+      border: 1px solid var(--line);
+      color: #dfe9ff;
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-size: 0.88rem;
+    }
+
+    ul { margin: 8px 0 0 18px; padding: 0; }
+    li { margin: 6px 0; color: var(--muted); }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--card-2);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.92rem;
+    }
+
+    .ok { color: var(--ok); }
+    .bad { color: var(--bad); }
+    .unk { color: var(--unknown); }
+
+    a { color: var(--link); }
+
+    .foot {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: #9eb0d1;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Codex Credits Watcher - Help</h1>
+      <p>
+        A tiny always-on-top desktop widget for Windows that monitors Codex quota status in real time
+        and displays it in a compact, taskbar-friendly layout.
+      </p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Purpose</h2>
+        <p>
+          This app helps you quickly see your current Codex quota health without opening the full CLI view.
+          It refreshes automatically and is designed to stay minimal, unobtrusive, and glanceable.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Widget Screenshot</h2>
+        <p>Current compact UI reference:</p>
+        <img src="codex_status_credit_watcher_app.png" alt="Codex Credits Watcher widget screenshot" class="shot" />
+      </article>
+
+      <article class="card">
+        <h2>Component Guide</h2>
+        <ul>
+          <li><span class="k">5h</span>: 5-hour quota window.</li>
+          <li><span class="k">Wk</span>: Weekly quota window.</li>
+          <li>Battery icons: quota level (fuller battery means more quota left).</li>
+          <li><span class="k">⏳</span> timers: time remaining until each quota window resets.</li>
+          <li><span class="k">$</span> status: credits availability indicator.</li>
+          <li><span class="k">x</span> button: closes the widget.</li>
+          <li><span class="k">Apoorva Consulting</span>: clickable link to website.</li>
+        </ul>
+
+        <div class="legend">
+          <div class="pill"><span class="ok">$ ✓</span> Credit available</div>
+          <div class="pill"><span class="bad">$ ✕</span> Credit not available</div>
+          <div class="pill"><span class="unk">$ ?</span> Credit unknown</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Terms and License (Non-Commercial)</h2>
+        <p>
+          This project is released for free, non-commercial use.
+          You may use, modify, and redistribute it for non-commercial purposes with attribution.
+        </p>
+        <ul>
+          <li>No commercial use is permitted under this license.</li>
+          <li>Redistributions must keep license and attribution notices.</li>
+          <li>The software is provided "as is" without warranty.</li>
+        </ul>
+        <p>
+          Full text (DE): <a href="../LICENSE-NONCOMMERCIAL.de.txt" target="_blank" rel="noreferrer">LICENSE-NONCOMMERCIAL.de.txt</a><br />
+          Full text (EN): <a href="../LICENSE-NONCOMMERCIAL.txt" target="_blank" rel="noreferrer">LICENSE-NONCOMMERCIAL.txt</a>
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Website</h2>
+        <p>
+          For AI based Analytics projects and further help visit:
+          <a href="https://www.zinzuvadia-online.com" target="_blank" rel="noreferrer">https://www.zinzuvadia-online.com</a>
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Versioning and Release Notes</h2>
+        <p>
+          Current version is tracked in <span class="k">VERSION</span>.
+          Full release history is available in <a href="changelog.md">docs/changelog.md</a>.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Known Limitation: Credit Balance Value</h2>
+        <p>
+          The widget currently shows credit availability status (`$ ✓ / ✕ / ?`) but does not reliably show
+          numeric billing credit values, because this value is not exposed through the current supported
+          Codex client interface.
+        </p>
+        <p>
+          Tracking issue:
+          <a href="https://github.com/openai/codex/issues/10233" target="_blank" rel="noreferrer">openai/codex#10233</a>
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>How We Got This Working (Technical)</h2>
+        <p>
+          The widget uses a local background Codex app-server session and reads status via JSON-RPC, instead of parsing
+          interactive terminal output. This avoids TTY constraints from `/status` in the interactive UI path.
+        </p>
+        <ul>
+          <li><span class="k">Data path</span>: app sends `account/rateLimits/read` to Codex app-server (`stdio` transport) every 5 seconds.</li>
+          <li><span class="k">UI mapping</span>: `usedPercent` values are converted to \"quota left\" and rendered as battery levels.</li>
+          <li><span class="k">Reset timing</span>: `resetsAt` timestamps are converted to compact countdown values (for example `1h 35m`, `5d+`).</li>
+          <li><span class="k">Credit state</span>: `credits` metadata is mapped to availability icon (`$ ✓ / ✕ / ?`).</li>
+          <li><span class="k">Runtime behavior</span>: Codex child process is started hidden on Windows to avoid terminal popups.</li>
+        </ul>
+        <p>
+          <strong>Tech stack:</strong> Python 3, Tkinter UI, subprocess + threading, JSON-RPC over stdio to Codex app-server.
+        </p>
+        <p>
+          <strong>Assumptions / prerequisites:</strong>
+        </p>
+        <ul>
+          <li>Codex CLI is installed and reachable in PATH (`codex.cmd`, `codex.exe`, or `codex`).</li>
+          <li>User is authenticated in Codex locally (login/session already valid on machine).</li>
+          <li>Machine allows local process execution and outbound network access required by Codex.</li>
+          <li>Codex app-server protocol continues to expose rate-limit fields used by this widget.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

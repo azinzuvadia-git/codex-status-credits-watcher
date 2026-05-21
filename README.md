@@ -26,3 +26,17 @@ python main.py
 ## Notes
 
 - Reads structured rate limits from Codex app-server (no interactive terminal scraping).
+
+## License
+
+This project is released under the non-commercial terms in `LICENSE-NONCOMMERCIAL.de.txt` (draft).
+
+## Help Guide
+
+Open `docs/help.html` for a visual usage guide and component reference.
+
+## Versioning
+
+- Current version: see `VERSION`
+- Release history: `docs/changelog.md`
+- Versioning policy: `docs/versioning.md`
