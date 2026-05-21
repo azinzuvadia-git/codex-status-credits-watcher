@@ -1,0 +1,6 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Codex Credits Watcher icon">
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="#101827" stroke="#2a3b5f" stroke-width="2"/>
+  <text x="14" y="40" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#7de2b8">$</text>
+  <path d="M39 22h12v6h3v8h-3v6H39z" fill="none" stroke="#d8e0ef" stroke-width="2"/>
+  <rect x="41" y="30" width="7" height="4" fill="#f0b36d"/>
+</svg>
