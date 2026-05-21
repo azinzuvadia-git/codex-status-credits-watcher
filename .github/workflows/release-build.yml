@@ -1,4 +1,4 @@
-﻿name: Build Windows Release Asset
+name: Build Windows Release Asset
 
 on:
   workflow_dispatch:
