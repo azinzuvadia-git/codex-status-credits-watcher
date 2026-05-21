@@ -6,6 +6,18 @@ This project follows Semantic Versioning with release candidates for pre-product
 - Pre-production: `X.Y.Z-rc.N`
 - Production: `X.Y.Z`
 
+## [0.1.0-rc.2] - 2026-05-21
+
+### Added
+- Community testing and feedback section in help page with direct GitHub Issues link.
+- Trust and reputation rollout playbook for consistent public release operations.
+
+### Changed
+- Help `?` button now opens hosted GitHub Pages help URL for reliable access.
+- Help `?` hover tooltip now shows 2-line app version display from `VERSION`.
+- Help page version display updated to `0.1.0-rc.2`.
+- Release build/release-security docs aligned with onefile + onedir artifact naming.
+
 ## [0.1.0-rc.1] - 2026-05-21
 
 ### Added
